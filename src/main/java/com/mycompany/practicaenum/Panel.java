@@ -27,19 +27,68 @@ public class Panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textoEntrada = new javax.swing.JTextArea();
+        ok = new javax.swing.JButton();
+        textoSalida = new javax.swing.JTextField();
+
+        setBackground(new java.awt.Color(51, 51, 255));
+        setForeground(new java.awt.Color(0, 0, 255));
+
+        textoEntrada.setBackground(new java.awt.Color(0, 0, 0));
+        textoEntrada.setColumns(20);
+        textoEntrada.setForeground(new java.awt.Color(255, 255, 255));
+        textoEntrada.setRows(5);
+        jScrollPane1.setViewportView(textoEntrada);
+
+        ok.setText("Verificar");
+
+        textoSalida.setBackground(new java.awt.Color(255, 255, 255));
+        textoSalida.setForeground(new java.awt.Color(0, 0, 0));
+        textoSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoSalidaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                            .addComponent(textoSalida)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(163, 163, 163)
+                        .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textoSalida, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(ok)
+                .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void textoSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoSalidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textoSalidaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton ok;
+    private javax.swing.JTextArea textoEntrada;
+    private javax.swing.JTextField textoSalida;
     // End of variables declaration//GEN-END:variables
 }
