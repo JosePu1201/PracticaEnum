@@ -37,7 +37,7 @@ public class Panel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        salida = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(51, 51, 255));
         setForeground(new java.awt.Color(0, 0, 255));
@@ -104,11 +104,11 @@ public class Panel extends javax.swing.JPanel {
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTextArea1.setBackground(new java.awt.Color(0, 0, 0));
-        jTextArea1.setColumns(20);
-        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        salida.setBackground(new java.awt.Color(0, 0, 0));
+        salida.setColumns(20);
+        salida.setForeground(new java.awt.Color(255, 255, 255));
+        salida.setRows(5);
+        jScrollPane2.setViewportView(salida);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -125,6 +125,7 @@ public class Panel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
+        salida.setText("");
         String entrda = textoEntrada.getText();
         if (entrda.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No hay texto de entrda");
@@ -152,20 +153,45 @@ public class Panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton ok;
+    private javax.swing.JTextArea salida;
     private javax.swing.JTextArea textoEntrada;
     // End of variables declaration//GEN-END:variables
     public void funcion(ArrayList<String> entrada) {
         for (String string : entrada) {
-            if(id(string)){
-                System.out.println("id: "+string);
-            }
-            else if(numero(string)){
-                System.out.println("Numero: "+string);
-            }
-            else if(error(string)){
-                System.out.println("Erro: "+string);
+            if (string == " ") {
+
+            } else {
+                /*
+                Comparaciones y agregar enums             
+                */
+                if (id(string)) {
+                    Item Id = Item.ID;
+                    Id.setTipo("ID");
+                    Id.setEntrada(string);
+                    salida.append(Id.toString() + "\n\n");
+
+                } else if (numero(string)) {
+                    Item numero = Item.NUMERO;
+                    numero.setTipo("NUMERO");
+                    numero.setEntrada(string);
+                    salida.append(numero.toString() + "\n\n");
+                } else if (decimal(string)) {
+                    Item numero = Item.DECIMAL;
+                    numero.setTipo("DECIMAL");
+                    numero.setEntrada(string);
+                    salida.append(numero.toString() + "\n\n");
+                } else if (simbolo(string)) {
+                    Item numero = Item.SIMBOLO;
+                    numero.setTipo("SIMBOLO");
+                    numero.setEntrada(string);
+                    salida.append(numero.toString() + "\n\n");
+                } else if (error(string)) {
+                    Item numero = Item.ERRO;
+                    numero.setTipo("ERROR");
+                    numero.setEntrada(string);
+                    salida.append(numero.toString() + "\n\n");
+                }
             }
         }
     }
@@ -173,39 +199,59 @@ public class Panel extends javax.swing.JPanel {
     public boolean id(String entrada) {
         boolean a = true;
         for (int i = 0; i < entrada.length(); i++) {
-            if(Character.isAlphabetic(entrada.charAt(i))){
-            
-            }
-            else{
+            if (Character.isAlphabetic(entrada.charAt(i))) {
+
+            } else {
                 a = false;
             }
         }
         return a;
     }
-    public boolean numero(String entrada){
+
+    public boolean numero(String entrada) {
         boolean a = true;
-            for (int i = 0; i < entrada.length(); i++) {
-            if(!Character.isDigit(entrada.charAt(i))){
+        for (int i = 0; i < entrada.length(); i++) {
+            if (!Character.isDigit(entrada.charAt(i))) {
                 a = false;
             }
         }
         return a;
     }
-    public boolean error(String entrada){
+
+    public boolean decimal(String entrada) {
         boolean a = false;
-        int numero= 0;
+        boolean isNumeric = entrada.matches("[+-]?\\d*(\\.\\d+)?");
+        if (isNumeric) {
+            a = true;
+        }
+        return a;
+    }
+
+    public boolean error(String entrada) {
+        boolean a = false;
+        int numero = 0;
         int letra = 0;
-        for (int i = 0; i < entrada.length(); i++) {            
-            if(Character.isDigit(entrada.charAt(i))){
+        for (int i = 0; i < entrada.length(); i++) {
+            if (Character.isDigit(entrada.charAt(i))) {
                 numero++;
             }
-            if(Character.isAlphabetic(entrada.charAt(i))){
+            if (Character.isAlphabetic(entrada.charAt(i))) {
                 letra++;
             }
-           
+
         }
-        if(numero>0 && letra > 0){
+        if (numero > 0 && letra > 0) {
             a = true;
+        }
+        return true;
+    }
+
+    public boolean simbolo(String entrada) {
+        boolean a = false;
+        if (entrada.length() == 1) {
+            if (!Character.isAlphabetic(entrada.charAt(0)) && !Character.isDigit(entrada.charAt(0))) {
+                a = true;
+            }
         }
         return a;
     }
