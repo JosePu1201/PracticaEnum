@@ -18,5 +18,8 @@ public class Main {
             a = prueba.charAt(i);
             System.out.println(a);
         }
+        Panel panel = new Panel();
+        Ventana ventana = new Ventana(panel);
+ 
     }
 }

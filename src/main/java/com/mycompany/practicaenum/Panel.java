@@ -5,6 +5,8 @@
  */
 package com.mycompany.practicaenum;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
@@ -26,14 +28,19 @@ public class Panel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jScrollPane1 = new javax.swing.JScrollPane();
         textoEntrada = new javax.swing.JTextArea();
         ok = new javax.swing.JButton();
-        textoSalida = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(51, 51, 255));
         setForeground(new java.awt.Color(0, 0, 255));
+        setLayout(new java.awt.GridBagLayout());
 
         textoEntrada.setBackground(new java.awt.Color(0, 0, 0));
         textoEntrada.setColumns(20);
@@ -41,54 +48,106 @@ public class Panel extends javax.swing.JPanel {
         textoEntrada.setRows(5);
         jScrollPane1.setViewportView(textoEntrada);
 
-        ok.setText("Verificar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 299;
+        gridBagConstraints.ipady = 97;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(6, 77, 0, 88);
+        add(jScrollPane1, gridBagConstraints);
 
-        textoSalida.setBackground(new java.awt.Color(255, 255, 255));
-        textoSalida.setForeground(new java.awt.Color(0, 0, 0));
-        textoSalida.addActionListener(new java.awt.event.ActionListener() {
+        ok.setBackground(new java.awt.Color(0, 0, 0));
+        ok.setForeground(new java.awt.Color(255, 255, 255));
+        ok.setText("Verificar");
+        ok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoSalidaActionPerformed(evt);
+                okActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.ipady = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 5, 38, 0);
+        add(ok, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                            .addComponent(textoSalida)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(78, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textoSalida, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(ok)
-                .addGap(20, 20, 20))
-        );
+        jLabel1.setBackground(new java.awt.Color(51, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(51, 255, 255));
+        jLabel1.setText("Texto de entrada: ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 77, 0, 0);
+        add(jLabel1, gridBagConstraints);
+
+        jLabel2.setBackground(new java.awt.Color(0, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(0, 255, 255));
+        jLabel2.setText("Resultado: ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(29, 77, 0, 0);
+        add(jLabel2, gridBagConstraints);
+
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setForeground(new java.awt.Color(0, 0, 0));
+
+        jTextArea1.setBackground(new java.awt.Color(0, 0, 0));
+        jTextArea1.setColumns(20);
+        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 299;
+        gridBagConstraints.ipady = 120;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(18, 77, 0, 88);
+        add(jScrollPane2, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textoSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoSalidaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textoSalidaActionPerformed
+    private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
+        String entrda = textoEntrada.getText();
+        if(entrda.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No hay texto de entrda");
+        }
+        else{
+            int espacios = 0;
+            for (int i = 0; i < entrda.length(); i++) {
+                char a = entrda.charAt(i);
+                if(a == ' '){
+                    espacios++;
+                }
+            }
+            System.out.println(espacios);
+        }
+    }//GEN-LAST:event_okActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton ok;
     private javax.swing.JTextArea textoEntrada;
-    private javax.swing.JTextField textoSalida;
     // End of variables declaration//GEN-END:variables
 }
