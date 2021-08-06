@@ -5,6 +5,7 @@
  */
 package com.mycompany.practicaenum;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -130,13 +131,19 @@ public class Panel extends javax.swing.JPanel {
         }
         else{
             int espacios = 0;
-            for (int i = 0; i < entrda.length(); i++) {
-                char a = entrda.charAt(i);
-                if(a == ' '){
-                    espacios++;
+            ArrayList<String> entradas = new ArrayList<>(); //Se guarda todo lo que este adentro 
+            String separado = ""; // espacios para guardar en el arreglo
+            for (int i = 0; i < entrda.length(); i++) { // recorre el texto introducido 
+                char a = entrda.charAt(i);              
+                if(a == ' '){ // separado se recetea por el espacio que hay 
+                    espacios++;                   
+                    entradas.add(separado);
+                    separado = "";
+                }
+                else{
+                    separado = separado+a;
                 }
             }
-            System.out.println(espacios);
         }
     }//GEN-LAST:event_okActionPerformed
 
@@ -150,4 +157,7 @@ public class Panel extends javax.swing.JPanel {
     private javax.swing.JButton ok;
     private javax.swing.JTextArea textoEntrada;
     // End of variables declaration//GEN-END:variables
+    public void funcion(ArrayList<String> entrada){
+        
+    }
 }
