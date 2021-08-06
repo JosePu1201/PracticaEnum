@@ -126,24 +126,23 @@ public class Panel extends javax.swing.JPanel {
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
         String entrda = textoEntrada.getText();
-        if(entrda.isEmpty()){
+        if (entrda.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No hay texto de entrda");
-        }
-        else{
+        } else {
             int espacios = 0;
             ArrayList<String> entradas = new ArrayList<>(); //Se guarda todo lo que este adentro 
             String separado = ""; // espacios para guardar en el arreglo
             for (int i = 0; i < entrda.length(); i++) { // recorre el texto introducido 
-                char a = entrda.charAt(i);              
-                if(a == ' '){ // separado se recetea por el espacio que hay 
-                    espacios++;                   
+                char a = entrda.charAt(i);
+                if (a == ' ') { // separado se recetea por el espacio que hay 
+                    espacios++;
                     entradas.add(separado);
                     separado = "";
-                }
-                else{
-                    separado = separado+a;
+                } else {
+                    separado = separado + a;
                 }
             }
+            funcion(entradas);
         }
     }//GEN-LAST:event_okActionPerformed
 
@@ -157,7 +156,57 @@ public class Panel extends javax.swing.JPanel {
     private javax.swing.JButton ok;
     private javax.swing.JTextArea textoEntrada;
     // End of variables declaration//GEN-END:variables
-    public void funcion(ArrayList<String> entrada){
-        
+    public void funcion(ArrayList<String> entrada) {
+        for (String string : entrada) {
+            if(id(string)){
+                System.out.println("id: "+string);
+            }
+            else if(numero(string)){
+                System.out.println("Numero: "+string);
+            }
+            else if(error(string)){
+                System.out.println("Erro: "+string);
+            }
+        }
+    }
+
+    public boolean id(String entrada) {
+        boolean a = true;
+        for (int i = 0; i < entrada.length(); i++) {
+            if(Character.isAlphabetic(entrada.charAt(i))){
+            
+            }
+            else{
+                a = false;
+            }
+        }
+        return a;
+    }
+    public boolean numero(String entrada){
+        boolean a = true;
+            for (int i = 0; i < entrada.length(); i++) {
+            if(!Character.isDigit(entrada.charAt(i))){
+                a = false;
+            }
+        }
+        return a;
+    }
+    public boolean error(String entrada){
+        boolean a = false;
+        int numero= 0;
+        int letra = 0;
+        for (int i = 0; i < entrada.length(); i++) {            
+            if(Character.isDigit(entrada.charAt(i))){
+                numero++;
+            }
+            if(Character.isAlphabetic(entrada.charAt(i))){
+                letra++;
+            }
+           
+        }
+        if(numero>0 && letra > 0){
+            a = true;
+        }
+        return a;
     }
 }
